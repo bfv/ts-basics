@@ -1,0 +1,27 @@
+{
+  "name": "ts-collections",
+  "version": "0.0.1",
+  "description": "A library of collections for TypeScript/JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tslint -c ./tslint.json --project ./src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bfv/tscolls.git"
+  },
+  "keywords": [
+    "typescript",
+    "collections"
+  ],
+  "author": "Bronco Oostermeyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bfv/tscolls/issues"
+  },
+  "homepage": "https://github.com/bfv/tscolls#readme",
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
