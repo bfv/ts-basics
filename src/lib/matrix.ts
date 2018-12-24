@@ -207,6 +207,22 @@ export class Matrix {
         }
     }
 
+    equals(other: Matrix): boolean {
+
+        if (this.rows !== other.rows || this.cols !== other.cols) {
+            return false;
+        }
+
+        let areEqual = true;
+        this.iterateElements((i, j) => {
+            if (this.data[i][j] !== other.getValue(i, j)) {
+                areEqual = false;
+            }
+        });
+
+        return areEqual;
+    }
+
     private round(value: number, decimals: number) {
         return Math.round(
             value * Math.pow(10, decimals)

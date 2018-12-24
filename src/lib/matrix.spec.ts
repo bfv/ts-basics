@@ -8,6 +8,9 @@ describe('Matrices', () => {
     let mIdentity2 = new Matrix(2, 2);
     mIdentity2.setValues([[1, 0], [0, 1]]);
 
+    let mIdentity3 = new Matrix(3, 3);
+    mIdentity3.setValues([[1, 0, 0], [0, 1, 0], [0, 0, 1]]);
+
     let mOnes2 = new Matrix(2, 2);
     mOnes2.setValues([[1, 1], [1, 1]]);
 
@@ -66,4 +69,19 @@ describe('Matrices', () => {
         expect(mr.getValue(1, 2)).to.be.equal(3);
         expect(mr.getValue(1, 3)).to.be.equal(-1);
     });
+
+    it('not equal when size differs', () => {
+        expect(mIdentity2.equals(mIdentity3)).to.be.equal(false);
+    });
+
+    it('not equal when content differs', () => {
+        expect(mIdentity2.equals(m2)).to.be.equal(false);
+    });
+
+    it('equal when size and content are the same', () => {
+        let mt = new Matrix(2, 2);
+        mt.setValues([[1, 2], [3, 4]]);
+        expect(m2.equals(mt)).to.be.equal(true);
+    });
+
 });
