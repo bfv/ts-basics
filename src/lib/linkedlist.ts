@@ -1,5 +1,5 @@
 
-import  { Comparable } from './collections';
+import { Comparable } from './collections';
 
 class ListItem<T> {
 
@@ -14,23 +14,6 @@ class ListItem<T> {
         if (next !== undefined) {
             this.next = next;
         }
-    }
-
-    public LogItem() {
-
-        console.log(
-            'prev:',
-            this.previous ? this.previous.value : 'null'
-        );
-
-        console.log('value:', this.value);
-
-        console.log(
-            'next:',
-            this.next ? this.next.value : 'null'
-        );
-
-        console.log('----------');
     }
 }
 
@@ -81,9 +64,9 @@ export class LinkedList<T> implements Iterable<T> {
         }
 
         this.size++;
-     }
+    }
 
-     clear() {
+    clear() {
 
         for (let listItem = this.first; listItem !== undefined;) {
             let next = listItem.next;
@@ -96,51 +79,22 @@ export class LinkedList<T> implements Iterable<T> {
         this.first = null;
         this.last = null;
         this.size = 0;
-     }
-     /*
-     private compare(item1: T, item2: T): number {
+    }
 
-        if (typeof item1 == 'number') {
-            if (item1 == item2) {
-                return 0;
-            }
-            if (item1 < item2) {
-                return -1;
-            }
-            return 1;
-        }
-        else if (typeof item1 == 'string' && typeof item2 == 'string') {
-            let str1 = item1.toLowerCase();
-            let str2 = item2.toLowerCase();
-
-            if (str1 == str2) {
-                return 0;
-            }
-            if (str1 < str2) {
-                return -1;
-            }
-            return 1;
-
-        }
-        // else if (item1 instanceof Comparable<T>) {
-
-        // }
-     }
-     */
-     contains(element: T): boolean {
+    contains(element: T): boolean {
         for (let item of this) {
             if (item === element) {
                 return true;
             }
         }
         return false;
-     }
+    }
 
-     get(index: number = 0): T {
+    get(index: number = 0): T {
         return this.item(index).value;
-     }
+    }
 
-     indexOf(element: T): number {
+    indexOf(element: T): number {
         let i = 0;
         for (let item of this) {
             if (item === element) {
@@ -148,9 +102,9 @@ export class LinkedList<T> implements Iterable<T> {
             }
         }
         return -1;
-     }
+    }
 
-     private item(index: number): ListItem<T> {
+    private item(index: number): ListItem<T> {
 
         let current: ListItem<T>;
 
@@ -168,13 +122,13 @@ export class LinkedList<T> implements Iterable<T> {
         }
 
         return current;
-     }
+    }
 
-     remove(index: number = 0): T {
+    remove(index: number = 0): T {
         return this.removeItem(this.item(index));
-     }
+    }
 
-     removeElement(element: T): boolean {
+    removeElement(element: T): boolean {
 
         let i = this.indexOf(element);
         if (i < 0) {
@@ -183,20 +137,19 @@ export class LinkedList<T> implements Iterable<T> {
 
         this.remove(i);
         return true;
-     }
+    }
 
-     removeLast(): T {
+    removeLast(): T {
         return this.remove(this.size - 1);
-     }
+    }
 
-     private removeItem(elementToRemove: ListItem<T>): T {
+    private removeItem(elementToRemove: ListItem<T>): T {
 
         if (elementToRemove === undefined) {
             return null;
         }
 
         const removeValue: T = elementToRemove.value;
-        //const next = elementToRemove.next;
 
         if (elementToRemove === this.first) {
             this.first = elementToRemove.next;
@@ -218,19 +171,19 @@ export class LinkedList<T> implements Iterable<T> {
         this.size--;
 
         return removeValue;
-     }
+    }
 
-     // sets value of specified element, returns old value
-     set(element: T, position: number): T {
+    // sets value of specified element, returns old value
+    set(element: T, position: number): T {
 
         const item = this.item(position);
         const oldValue = item.value;
         item.value = element;
 
         return oldValue;
-     }
+    }
 
-     toArray(): Array<T> {
+    toArray(): Array<T> {
 
         const array: Array<T> = [];
 
@@ -240,9 +193,9 @@ export class LinkedList<T> implements Iterable<T> {
         }
 
         return array;
-     }
+    }
 
-     [Symbol.iterator]() {
+    [Symbol.iterator]() {
         let current = this.first;
         return {
             next(): IteratorResult<T> {
@@ -257,7 +210,7 @@ export class LinkedList<T> implements Iterable<T> {
                 }
                 else {
                     return {
-                        done:  true,
+                        done: true,
                         value: null
                     };
                 }
